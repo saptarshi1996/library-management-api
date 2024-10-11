@@ -103,7 +103,7 @@ export const userRegister = async (req: Request) => {
   expiredAt.setMinutes(expiredAt.getMinutes() + 10)
 
   const userVerificationCreated = await createUserVerificationToDB({
-    otp,
+    otp: String(otp),
     user_id: newUser.id,
     created_at: createdAt,
     expired_at: expiredAt

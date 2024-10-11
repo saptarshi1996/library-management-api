@@ -13,6 +13,7 @@ export default function (handler: any) {
       const response = await handler(req, res, next)
       return res.status(200).json(response)
     } catch (error: any) {
+      logger.error(error.stack)
       return res.status(error.statusCode || 500).json({ message: error.message })
     }
   }
