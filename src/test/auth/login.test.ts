@@ -5,7 +5,7 @@ import Application from '../../server/application'
 
 import * as userRepository from '../../repository/user'
 
-describe('POST /auth/login', () => {
+describe('POST /api/auth/login', () => {
   afterEach(async () => {
     sinon.restore()
   })
@@ -14,7 +14,7 @@ describe('POST /auth/login', () => {
     sinon.stub(userRepository, 'getUserFromDB').resolves(null)
 
     const app = await Application()
-    const response = await request(app).post('/auth/login').send({
+    const response = await request(app).post('/api/auth/login').send({
       email: 'jdoe@yopmail.com',
       password: '12345'
     })
@@ -32,7 +32,7 @@ describe('POST /auth/login', () => {
     } as any)
 
     const app = await Application()
-    const response = await request(app).post('/auth/login').send({
+    const response = await request(app).post('/api/auth/login').send({
       email: 'jdoe@yopmail.com',
       password: '12345'
     })
@@ -51,7 +51,7 @@ describe('POST /auth/login', () => {
     } as any)
 
     const app = await Application()
-    const response = await request(app).post('/auth/login').send({
+    const response = await request(app).post('/api/auth/login').send({
       email: 'jdoe@yopmail.com',
       password: '1234'
     })
