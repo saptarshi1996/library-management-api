@@ -30,8 +30,12 @@ const Application = async () => {
   }))
   app.use(express.json())
 
-  app.use('/auth', authRouter)
-  app.use('/user', userRouter)
+  const router = express.Router()
+
+  router.use('/auth', authRouter)
+  router.use('/user', userRouter)
+
+  app.use('/api', router)
 
   app.use((err: any, req: Request, res: Response, next: NextFunction) => {
     logger.error(err.stack)
